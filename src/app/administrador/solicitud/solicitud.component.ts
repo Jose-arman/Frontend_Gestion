@@ -28,9 +28,5 @@ export class SolicitudComponent {
     );
   }
 
-  descargarPDF(rutaArchivo: string) {
-    // Abre el archivo PDF en una nueva ventana o pestaña del navegador
-    window.open(rutaArchivo, '_blank');
-  }
-
+  
 }

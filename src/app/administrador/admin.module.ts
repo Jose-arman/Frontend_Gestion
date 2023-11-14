@@ -8,6 +8,7 @@ import { VeragremiadoComponent } from './veragremiado/veragremiado.component';
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditaragremiadoComponent } from './editaragremiado/editaragremiado.component';
+import { AuthGuardAdministrador } from '../guards/auth-administrador.guard';
 
 const routes: Routes = [
 
@@ -17,11 +18,13 @@ const routes: Routes = [
       {
         path: '',
         component: InicioComponent,
+        canActivate: [AuthGuardAdministrador],
        //canActivate: [AdmingGuard] // child route component that the router renders
       },
-      { path: 'agremiado', component: AgremiadoComponent },
-      { path: 'veragremiado', component: VeragremiadoComponent },
-      { path: 'solicitud', component: SolicitudComponent },
+      { path: 'agremiado', component: AgremiadoComponent, canActivate: [AuthGuardAdministrador] },
+      { path: 'veragremiado', component: VeragremiadoComponent, canActivate: [AuthGuardAdministrador] },
+      { path: 'solicitud', component: SolicitudComponent, canActivate: [AuthGuardAdministrador] },
+      { path: 'editaragremiado', component: EditaragremiadoComponent, canActivate: [AuthGuardAdministrador] },
       {
         path: '**',
         redirectTo: ''

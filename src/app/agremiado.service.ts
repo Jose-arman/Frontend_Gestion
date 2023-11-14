@@ -37,6 +37,17 @@ agregarAgremiado(datosNuevoAgremiado: any): Observable<any> {
   return this.http.post<any>(`${this.url}/agregarAgremiado`, datosNuevoAgremiado);
 }
 
+private apiUrl = 'http://localhost:8000/api/agregarAgremiado';
+
+
+agregarAgremiado2(agremiadoData: any): Observable<any> {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+  return this.http.post<any>(this.apiUrl, agremiadoData, { headers });
+}
+
 
 }
 

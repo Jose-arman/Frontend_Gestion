@@ -14,6 +14,7 @@ import { FormatosComponent } from './formatos/formatos.component';
 import { ConvocatoriasComponent } from './convocatorias/convocatorias.component';
 import { ConveniosComponent } from './convenios/convenios.component';
 import { AdminModule } from './administrador/admin.module';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdminModule } from './administrador/admin.module';
     HomeAdminComponent,
     FormatosComponent,
     ConvocatoriasComponent,
-    ConveniosComponent
+    ConveniosComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

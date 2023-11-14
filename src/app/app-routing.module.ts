@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { FormatosComponent } from './formatos/formatos.component';
 import { ConvocatoriasComponent } from './convocatorias/convocatorias.component';
 import { ConveniosComponent } from './convenios/convenios.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { AuthGuardAgremiado } from './guards/auth-agremiado.guard';
 
 
 const routes: Routes = [
@@ -11,7 +13,8 @@ const routes: Routes = [
   { path: 'formato', component: FormatosComponent },
   { path: 'convocatoria', component: ConvocatoriasComponent },
   { path: 'convenio', component: ConveniosComponent },
-  //{ path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'usuario', component: UsuarioComponent,  canActivate: [AuthGuardAgremiado]},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   {
     path: 'ha',

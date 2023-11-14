@@ -1,32 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private apiBaseUrl = 'http://localhost:8000/api/';
+  url = 'http://localhost:8000/api/';
+  constructor(private http: HttpClient, private router: Router) { }
 
-  constructor(private http: HttpClient) { }
+  login(NUE: string, password: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
 
-  login(NUE: string, password: string): Observable<any> {
-    // Realiza la solicitud POST al servidor para autenticar al usuario
-    const data = { NUE, password };
-    return this.http.post(this.apiBaseUrl + 'login', data);
+    const body = {
+      NUE: NUE,
+      password: password
+    };
+
+    return this.http.post('http://localhost:8000/api/login', body, { headers: headers });
   }
 
 
-   //Guardar token en localStorage
-   saveToken(token: string) {
-    localStorage.setItem('token', token);
-  }
 
-  //Guardar datos del usuario en localStorage
-  saveUser(NUE: any) {
-    localStorage.setItem('user', JSON.stringify(NUE));
-
+  logOut(){
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+    
+   
   }
 
   

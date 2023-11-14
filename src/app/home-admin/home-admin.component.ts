@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home-admin',
@@ -13,38 +14,28 @@ export class HomeAdminComponent {
  
 
   logOut() {
-    //this.authS.logOut().subscribe(
-     // (response) => {
-     //   console.log('Logout exitoso:', response);
-     //   localStorage.removeItem('token');
-     //   localStorage.removeItem('user');
-     //   this.rou.navigate(['/login']);
-     // },
-     // (error) => {
-     //   console.error('Error al hacer logout:', error);
-     // }
-    //);
+    this.authS.logOut();
   }
 
   confirmarAlert() {
-  //  Swal.fire({
-   //   title: 'Are you sure?',
-   //   text: "You won't be able to revert this!",
-  //    icon: 'warning',
-  //    showCancelButton: true,
-  //    confirmButtonColor: '#3085d6',
-  //    cancelButtonColor: '#d33',
- //     confirmButtonText: 'Yes, do it!'
- //   }).then((result) => {
-  //    if (result.isConfirmed) {
-  //      this.logOut();
-  //      Swal.fire(
-  //        'Logged Out!',
-  //        'You have been logged out successfully.',
-  //        'success'
-  //      );
-  //    }
-  //  });
+    Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+     icon: 'warning',
+    showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+     confirmButtonText: 'Yes, do it!'
+   }).then((result) => {
+    if (result.isConfirmed) {
+        this.logOut();
+        Swal.fire(
+          'Logged Out!',
+          'You have been logged out successfully.',
+          'success'
+        );
+    }
+  });
   }
 
  // userD: any;;
