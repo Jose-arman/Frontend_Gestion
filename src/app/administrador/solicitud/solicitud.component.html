@@ -1,6 +1,34 @@
 <div class="container mt-3">
   <h2>Lista de solicitud</h2>
 
+  <!-- Agrega la tabla para el filtro de fechas -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Fecha de Inicio:</th>
+        <th>Fecha de Fin:</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="form-group">
+            <input type="date" class="form-control" id="fechaInicio" [(ngModel)]="fechaInicio">
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <input type="date" class="form-control" id="fechaFin" [(ngModel)]="fechaFin">
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="filtrarSolicitudes()">Filtrar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
   <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
@@ -11,13 +39,12 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Los datos se llenarán dinámicamente aquí -->
         <tr *ngFor="let solicitud of solicitudes">
           <td>{{ solicitud.NUE }}</td>
-          <td>{{ solicitud.updated_at}}</td>
+          <td>{{ solicitud.updated_at }}</td>
           <td>
             <a class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer"
-              [href]="solicitud.ruta_archivo" download>
+               [href]="solicitud.ruta_archivo" download>
               Descargar
             </a>
           </td>

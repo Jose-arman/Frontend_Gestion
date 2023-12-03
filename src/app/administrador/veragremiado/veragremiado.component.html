@@ -1,52 +1,69 @@
-<div class="container mt-3">
-  <h2>Lista de Agremiados</h2>
-<div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#ID</th>
-          <th>Apellido Paterno</th>
-          <th>Apellido Materno</th>
-          <th>Nombre(s)</th>
-          <th>Sexo</th>
-          <th>NUP</th>
-          <th>NUE</th>
-          <th>RFC</th>
-          <th>NSS</th>
-          <th>Fecha de Nacimiento</th>
-          <th>Telefono</th>
-          <th>Cuota</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Los datos se llenarán dinámicamente aquí -->
-        <tr *ngFor="let agremiado of agremiados">
-          <td>{{ agremiado.id }}</td>
-          <td>{{ agremiado.a_paterno }}</td>
-          <td>{{ agremiado.a_materno }}</td>
-          <td>{{ agremiado.nombre }}</td>
-          <td>{{ agremiado.sexo }}</td>
-          <td>{{ agremiado.NUP }}</td>
-          <td>{{ agremiado.NUE }}</td>
-          <td>{{ agremiado.RFC }}</td>
-          <td>{{ agremiado.NSS }}</td>
-          <td>{{ agremiado.fecha_nacimiento }}</td>
-          <td>{{ agremiado.telefono }}</td>
-          <td>{{ agremiado.cuota }}</td>
-          <td>
-            <!-- Aquí puedes agregar botones de acciones, por ejemplo, editar o eliminar -->
-            <button type="button" class="btn btn-primary btn-sm mr-1" (click)="editarAgremiado(agremiado)">
-              <i class="bi bi-pencil"></i> Editar
-            </button>
-            <button type="button" class="btn btn-danger btn-sm" (click)="eliminarAgremiado(agremiado.id)">
-              <i class="bi bi-trash"></i> Eliminar
-            </button>        
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
-  
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agremiado</title>
+</head>
+
+<header>
+
+    <div class="col-sm-12">
+        <div class="d-flex align-items-center justify-content-between">
+            <h4 class="titulo-principal">AGREMIADOS</h4>
+        </div>
+    </div>
+    <hr>
+</header>
+<body>
+    <div class="table-responsive">
+        <table id="table-data-agremiados" class="table table-bordered table-hove table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Nombre(s)</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">NUP</th>
+                    <th scope="col">NUE</th>
+                    <th scope="col">RFC</th>
+                    <th scope="col">NSS</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Cuota</th>
+                    <th scope="col" class="opciones">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of agremiados; let i=index ">
+                    <td scope="row" align="center">{{i+1}}</td>
+                    <td>{{item.a_paterno}} {{item.a_materno}}</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.sexo}}</td>
+                    <td>{{item.NUP}}</td>
+                    <td>{{item.NUE}}</td>
+                    <td>{{item.RFC}}</td>
+                    <td>{{item.NSS}}</td>
+                    <td>{{item.telefono}}</td>
+                    <td align="center">{{item.cuota}}</td>
+                    <td class="opciones-botones">
+                      <button (click)="editaragremiado(item.id)" title="Modificar agremiado" type="button"
+                      class="btn btn-sm boton-editar btn-azul"><i class="fa-regular fa-pen-to-square"></i></button>
+              
+              <button (click)="eliminarAgremiado(item.id)" title="Eliminar agremiado" type="button"
+                      class="btn btn-sm boton-eliminar btn-rojo"><i class="fa-regular fa-trash-can"></i></button>
+              
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+
+</body>
+
+</html>

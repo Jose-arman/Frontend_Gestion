@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AgremiadoService } from 'src/app/agremiado.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AgremiadoComponent {
   
 
 
-  constructor(private fb: FormBuilder, private tuServicio: AgremiadoService) {
+  constructor(private fb: FormBuilder, private tuServicio: AgremiadoService, private rou: Router) {
     this.agremiadoForm = this.fb.group({
       a_paterno: ['', Validators.required, Validators.minLength(3), Validators.maxLength(50)],
       a_materno: ['', Validators.required, Validators.minLength(3), Validators.maxLength(50)],

@@ -9,7 +9,6 @@ import { SolicitudComponent } from './solicitud/solicitud.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditaragremiadoComponent } from './editaragremiado/editaragremiado.component';
 import { AuthGuardAdministrador } from '../guards/auth-administrador.guard';
-
 const routes: Routes = [
 
   {
@@ -24,7 +23,7 @@ const routes: Routes = [
       { path: 'agremiado', component: AgremiadoComponent, canActivate: [AuthGuardAdministrador] },
       { path: 'veragremiado', component: VeragremiadoComponent, canActivate: [AuthGuardAdministrador] },
       { path: 'solicitud', component: SolicitudComponent, canActivate: [AuthGuardAdministrador] },
-      { path: 'editaragremiado', component: EditaragremiadoComponent, canActivate: [AuthGuardAdministrador] },
+      { path: 'editaragremiado/:id', component: EditaragremiadoComponent, canActivate: [AuthGuardAdministrador] },
       {
         path: '**',
         redirectTo: ''
@@ -43,13 +42,13 @@ const routes: Routes = [
     SolicitudComponent,
     EditaragremiadoComponent 
 
-  ],
+  ],  
   imports: [
     
     RouterModule.forChild(routes),
     CommonModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ],
   exports: [
     InicioComponent,

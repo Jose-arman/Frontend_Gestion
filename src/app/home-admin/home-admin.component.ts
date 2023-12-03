@@ -19,19 +19,19 @@ export class HomeAdminComponent {
 
   confirmarAlert() {
     Swal.fire({
-    title: 'Are you sure?',
-    text: "You won't be able to revert this!",
+    title: 'Deseas salir?',
+    text: "Al aceptar saldras del sistema",
      icon: 'warning',
     showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-     confirmButtonText: 'Yes, do it!'
+     confirmButtonText: 'Si'
    }).then((result) => {
     if (result.isConfirmed) {
         this.logOut();
         Swal.fire(
-          'Logged Out!',
-          'You have been logged out successfully.',
+          'Sesion cerrada',
+          'Regresa pronto',
           'success'
         );
     }

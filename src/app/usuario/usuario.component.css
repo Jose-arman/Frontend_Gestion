@@ -1,0 +1,33 @@
+/* Agrega estos estilos al archivo de estilos */
+
+.container {
+    background-color: #f4f4f4; /* Color de fondo gris claro para el área del usuario y el botón de cerrar sesión */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  .d-flex {
+    align-items: center; /* Alinea verticalmente el contenido dentro del área gris */
+  }
+  
+  /* Estilos para el área del usuario */
+  .d-flex div:first-child {
+    background-color: #666; /* Color de fondo gris oscuro para el área del usuario */
+    padding: 10px;
+    border-radius: 5px; /* Bordes redondeados */
+    color: #000; /* Cambia el color del texto a negro */
+  }
+  
+  /* Estilos para el botón de cerrar sesión */
+  .d-flex div:last-child button {
+    background-color: #dc3545; /* Color de fondo rojo para el botón de cerrar sesión */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  /* Cambia el color del texto del botón de cerrar sesión */
+  .d-flex div:last-child button:hover {
+    background-color: #c82333; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+  }
+  

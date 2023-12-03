@@ -15,6 +15,10 @@ import { ConvocatoriasComponent } from './convocatorias/convocatorias.component'
 import { ConveniosComponent } from './convenios/convenios.component';
 import { AdminModule } from './administrador/admin.module';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { UsuarioComponent } from './usuario/usuario.component';
     RouterLink ,
     ReactiveFormsModule,
     RouterModule,
-    AdminModule
+    AdminModule,
+    //ModalModule.forRoot(),
+    //BrowserAnimationsModule
+    
+    
     
     
   ],

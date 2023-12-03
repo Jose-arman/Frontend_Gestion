@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AgremiadoService } from 'src/app/agremiado.service';
 import Swal from 'sweetalert2';
+
 
 interface Curso {
   id: number;
@@ -16,6 +18,7 @@ interface Curso {
   telefono: string;
   cuota: boolean;
 }
+declare var $: any; // Asegúrate de tener jQuery disponible globalmente
 
 
 @Component({
@@ -23,35 +26,93 @@ interface Curso {
   templateUrl: './veragremiado.component.html',
   styleUrls: ['./veragremiado.component.css']
 })
-export class VeragremiadoComponent { 
-  agremiados: any[] = []; // Ajusta el tipo de datos según la estructura de tus agremiados
+
+
+export class VeragremiadoComponent implements OnInit, AfterViewInit{ 
+  agremiados: any[] = []; 
 
 
   
 
-  constructor(private agremiado: AgremiadoService) {}
+  constructor(private agremiado: AgremiadoService, private rou: Router) {
+  }
+  
+
+  
 
   ngOnInit() {
     this.getAgremiados();
+    
+    
   }
 
+  ngAfterViewInit(): void {
+  
+  }
+
+  
   getAgremiados() {
     this.agremiado.getVerAagremido().subscribe(
       (data) => {
-        this.agremiados = data; // Asigna los datos recibidos al arreglo agremiados
-        console.log('Datos obtenidos:', this.agremiados); // Muestra los datos en la consola
+        this.agremiados = data;
+        console.log('Datos obtenidos:', this.agremiados);
+
+        // Lógica de DataTables aquí, después de obtener los datos
+        $(document).ready(() => {
+          const table = $('#table-data-agremiados').DataTable({
+            dom: 'lBfrtip',
+            buttons: [
+            //  {
+             //   extend: 'copy',
+            //    exportOptions: {
+             //     columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            //    },
+            //     className: 'btn-exportar btn-azul',
+             // },
+              {
+                extend: 'csv',
+                exportOptions: {
+                  columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                }
+              },
+              {
+                extend: 'excel',
+                exportOptions: {
+                  columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                }
+              },
+              {
+                extend: 'pdf',
+                exportOptions: {
+                  columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                }
+              },
+              {
+                extend: 'print',
+                exportOptions: {
+                  columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                }
+              },
+            ],
+            // Otros parámetros y configuraciones de DataTables
+          });
+
+          // Oculta la columna de opciones en la versión impresa
+        });
       },
       (error) => {
         console.error('Error al obtener agremiados:', error);
       }
-    );
+    ); 
   }
+
+
   
 
-  editarAgremiado(agremiado: any) {
+  //editarAgremiado(agremiado: any) {
     // Agrega lógica para editar un agremiado
-    console.log('Editar agremiado:', agremiado);
-  }
+   // console.log('Editar agremiado:', agremiado);
+  //}
 
   eliminarAgremiado(id: number) {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -95,5 +156,24 @@ export class VeragremiadoComponent {
       }
     });
   }
+
+
+  editaragremiado(id: number){
+    console.log('TESING', id);
+    this.goodNot();
+    this.rou.navigateByUrl(`homeadmin/editaragremiado/${id}`); 
+  }
+
+  //dtOptions: DataTables.Settings = {};
+  goodNot() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Agremiado editado exitosa!!!',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
+
 
 }

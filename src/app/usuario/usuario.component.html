@@ -1,1 +1,37 @@
-<p>usuario works!</p>
+<!-- tabla.component.html -->
+<div class="container">
+  <div class="d-flex justify-content-between mb-3">
+    <div class="user-title-container bg-light p-2 rounded text-center">
+      <!-- Aquí puedes colocar tu contenido del dashboard -->
+      <!-- Por ejemplo, algún título o icono representando el dashboard -->
+      <h3 class="m-0">USUARIO</h3>
+    </div>
+    <div class="logout-button-container bg-light p-2 rounded">
+      <!-- Botón de cerrar sesión -->
+      <button class="btn btn-danger" (click)="confirmarAlert()">Cerrar Sesión</button>
+    </div>
+  </div>
+
+  <div class="card" style="border: 2px solid #ccc;">
+    <div class="card-header">
+      <h5 class="card-title">Formulario de Solicitud</h5>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="Form_solicitud" (ngSubmit)="guardar()">
+        <div class="row">
+          <div class="col">
+            <label for="file" class="form-label">Archivo</label>
+            <input type="file" class="form-control" id="file" (change)="onFileSelected($event)"
+              accept=".pdf, .doc, docx, .jpg, .png, .jpeg">
+          </div>
+          <div class="col">
+            <!-- New input field for NUE -->
+            <label for="NUE" class="form-label">NUE</label>
+            <input type="text" class="form-control" id="NUE" formControlName="NUE">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Agregar Solicitud</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,19 @@
-<p>formatos works!</p>
+<div class="container">
+    <div class="d-flex justify-content-between mb-3">
+      <div class="user-title-container bg-light p-2 rounded text-center">
+        <h3 class="m-0">Formato</h3>
+      </div>
+      <div class="logout-button-container bg-light p-2 rounded">
+        <button class="btn btn-danger" (click)="salir()">Regresar</button>
+      </div>
+    </div>
+  
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Para la solicitud necesitas descargar el docx</h5>
+        <p class="card-text">Haz clic en el botón de abajo para descargar el archivo Word.</p>
+        <button class="btn btn-primary" (click)="downloadWordFile()">Descargar Archivo Word</button>
+      </div>
+    </div>
+  </div>
+  

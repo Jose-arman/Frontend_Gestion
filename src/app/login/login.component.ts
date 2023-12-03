@@ -58,7 +58,7 @@ export class LoginComponent {
               Swal.fire({
                 icon: 'success',
                 title: 'Hola!',
-                text: 'Bienvenido usuario Agremiado',
+                text: 'Bienvenido Usuario',
                 showConfirmButton: true
               });
             } else {

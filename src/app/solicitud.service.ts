@@ -6,11 +6,17 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class SolicitudService {
-  url: string = 'http://localhost:8000/api';
+  url= 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) { }
 
   getVersolicitud(): Observable<any>{
     return this.http.get<any>(this.url+'/obtenerSolicitud');
   }
+
+
+  agregarSolicitud(datosNuevoSolicitud: any) {
+    return this.http.post(`${this.url}/agregarsolicitud`, datosNuevoSolicitud);
+  } 
+  
 }
